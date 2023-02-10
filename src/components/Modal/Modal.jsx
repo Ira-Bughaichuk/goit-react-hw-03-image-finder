@@ -8,14 +8,14 @@ export default class Modal extends Component {
     window.addEventListener('keydown', this.handleCloseEsc);
   }
   componentWillUnmount() {
-        window.removeEventListener('keydown', this.handleCloseEsc);
+    window.removeEventListener('keydown', this.handleCloseEsc);
   }
 
- handleCloseEsc=(e) => {
-      if (e.code === 'Escape') {
-        this.props.onCloseModal(); 
-      }
-  }
+  handleCloseEsc = e => {
+    if (e.code === 'Escape') {
+      this.props.onCloseModal();
+    }
+  };
   handleCloseBackdrop = ({ target, currentTarget }) => {
     if (target === currentTarget) {
       this.props.onCloseModal();
@@ -23,16 +23,15 @@ export default class Modal extends Component {
   };
   render() {
     return createPortal(
-      <Overlay onClick={ this.handleCloseBackdrop } className="overlay">
-        <ModalDiv  className="modal">
-          <img src={this.props.currentImg} alt="" width="800" height="600"/>
+      <Overlay onClick={this.handleCloseBackdrop} className="overlay">
+        <ModalDiv className="modal">
+          <img src={this.props.currentImg} alt="" width="800" height="600" />
         </ModalDiv>
       </Overlay>,
-     document.getElementById('modal-root')
-    )
+      document.getElementById('modal-root')
+    );
   }
 }
 Modal.propTypes = {
   currentImg: PropTypes.string.isRequired,
-}
-
+};

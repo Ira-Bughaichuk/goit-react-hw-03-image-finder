@@ -4,11 +4,18 @@ import { ButtonLoadMore } from './ButtonLoadMore.styled';
 
 export default function Button({ onClick, hidden }) {
   return (
-      <ButtonLoadMore  className="button" type="button" hidden={hidden} onClick={onClick}>Load More</ButtonLoadMore> 
-  )
+    <ButtonLoadMore
+      className="button"
+      type="button"
+      hidden={hidden}
+      onClick={onClick}
+    >
+      Load More
+    </ButtonLoadMore>
+  );
 }
 
 Button.prototype = {
   onClick: PropTypes.func.isRequired,
   hidden: PropTypes.bool.isRequired,
-}
+};
