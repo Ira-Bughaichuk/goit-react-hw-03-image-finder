@@ -5,10 +5,10 @@ export default function Loader() {
   return (
     <Circles
   height="80"
-  width="80"
+    width="80"
   color="#4fa94d"
   ariaLabel="circles-loading"
-  wrapperStyle={{}}
+  wrapperStyle={{margin:'30px auto',}}
   wrapperClass=""
   visible={true}
 />

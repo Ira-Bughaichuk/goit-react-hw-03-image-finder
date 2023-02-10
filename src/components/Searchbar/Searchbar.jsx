@@ -1,16 +1,15 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-
+import { SearchBarHeader, SearchForm,SearchFormInput,  SearchFormButton } from './Searchbar.styled';
+import SearchIcon from '@mui/icons-material/Search';
 
 export default class Searchbar extends Component {
     state = {
        query:'',
     }
-
     handleChange = (e) => {
         this.setState({ query: e.target.value.toLowerCase()});
     }
-    
     handleSubmit = (e) => {
         e.preventDefault();
         if (this.state.query.trim() === '') {
@@ -24,15 +23,14 @@ export default class Searchbar extends Component {
   render() {
     return (
         <>
-         <header className="searchBar">
-            <form className="form"  onSubmit={this.handleSubmit}>
-                <button onClick={this.handleSubmit} type="submit" className="button">
-                    <span className="button-label">Search</span>
-                </button>
+         <SearchBarHeader >
+            <SearchForm  onSubmit={this.handleSubmit}>
+                <SearchFormButton onClick={this.handleSubmit} type="submit" >
+                    <SearchIcon />
+                </SearchFormButton>
 
-                <input
+                <SearchFormInput
                     onChange={this.handleChange}
-                     className="input"
                     name="query"
                     value={this.state.query}
                     type="text"
@@ -40,9 +38,12 @@ export default class Searchbar extends Component {
                     autoFocus
                     placeholder="Search images and photos"
                 />
-            </form>
-          </header>
+            </SearchForm>
+          </SearchBarHeader>
         </>
     )
   }
+}
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 }

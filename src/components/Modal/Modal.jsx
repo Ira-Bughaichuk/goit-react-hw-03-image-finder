@@ -1,7 +1,7 @@
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
-
+import { Overlay, ModalDiv } from './Modal.styled';
 
 export default class Modal extends Component {
   componentDidMount() {
@@ -23,13 +23,16 @@ export default class Modal extends Component {
   };
   render() {
     return createPortal(
-      <div  className="overlay">
-        <div onClick={ this.handleCloseBackdrop } className="modal"> Modal****
+      <Overlay onClick={ this.handleCloseBackdrop } className="overlay">
+        <ModalDiv  className="modal">
           <img src={this.props.currentImg} alt="" width="800" height="600"/>
-        </div>
-      </div>,
+        </ModalDiv>
+      </Overlay>,
      document.getElementById('modal-root')
     )
   }
+}
+Modal.propTypes = {
+  currentImg: PropTypes.string.isRequired,
 }
 
